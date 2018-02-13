@@ -1,5 +1,7 @@
 @import 'base';
 @import '~bootstrap/scss/bootstrap.scss';
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
 
 // Some best-practice CSS that's useful for most apps
 // Just remove them if they're not what you want
@@ -12,10 +14,46 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  color: #514a57;
 }
 
 *,
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+.contaner-img{
+  outline: none;
+  width: 360px!important;
+}
+.table-bordered, .table-bordered td, .table-bordered th,.table thead th {
+  border: 1px solid #ead8f3ba;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color:  #ead8f34f;
+}
+
+.header-label{
+  background-color: #dcc6e7;
+  padding-top: 15px;
+  color: #ffff;
+  font-family: 'Montserrat', sans-serif;
+}
+.table thead th {
+ background-color:  #ffffff;
+}
+.content{
+  border-radius: 5px;
+  background-color: #ffff;
+  margin: auto;
+  width: 90%;
+  padding: 15px 60px;
+}
+.slick-next:before, .slick-prev:before {
+  line-height: 1;
+  color: rgba(121, 121, 121, 0.54);
+  font-size: 45px;
+  margin: auto;
 }
