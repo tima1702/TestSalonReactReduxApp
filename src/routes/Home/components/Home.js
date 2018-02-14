@@ -15,7 +15,7 @@ export default class Home extends React.Component {
 }
 
   componentWillMount() {
-    this.props.fetchSalons(this.props.salons.count)
+    this.props.fetchSalons(this.props.count)
       .then(() => {
         this.setState({loading: false})
       })
@@ -25,7 +25,7 @@ export default class Home extends React.Component {
   }
 
   loadNextSalons() {
-    this.props.fetchSalons(this.props.salons.count)
+    this.props.fetchSalons(this.props.count)
   }
 
 

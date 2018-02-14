@@ -6,7 +6,8 @@ import { bindActionCreators } from 'redux'
 function mapStateToProps(state) {
   return {
     salons: state.salons,
-    total: state.total
+    total: state.total,
+    count: state.count
   }
 }
 
