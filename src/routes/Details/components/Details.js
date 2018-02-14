@@ -7,21 +7,28 @@ export default class extends React.Component {
     this.state = {
       salon: {},
       loading: true,
-      error: false
+      error: false,
+      services: []
     }
   }
 
   componentDidMount() {
-    let { params, fetchSalon} = this.props;
+    console.log('props', this.props)
+    let { params, fetchSalon, fetchServices} = this.props;
     fetchSalon(params.id)
       .then((data) => {
         let salon = data.salon && data.salon.salon || false;
         salon ? this.setState({salon, loading: false}) : this.setState({error: true});
     })
+    fetchServices(params.id)
+    .then((data) => {
+      let services = data.services && data.services.services || false;
+      services ? this.setState({services, loading: false}) : this.setState({error: true});
+    })
   }
 
   render () {
-    let {salon, loading} = this.state;
+    let {salon, loading, services} = this.state;
     return (
       loading ? <div /> :
       <div className="text-center">
@@ -63,7 +70,7 @@ export default class extends React.Component {
                 </thead>
                 <tbody>
                 {
-                  [1, 2, 3, 4].map((service, index) => (
+                  services.map((service, index) => (
                     <tr key={index}>
                       <td>{service.name || 'Nails1'}</td>
                       <td>{service.duration || '25' + ' minutes'}</td>
