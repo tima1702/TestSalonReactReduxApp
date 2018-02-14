@@ -1,4 +1,4 @@
-export default function rootReducer(state={salons: [], count: 0}, action) {
+export default function rootReducer(state={salons: [], count: 1}, action) {
   switch (action.type) {
     case "RECEIVE_SALONS":
       let salons = action && action.salons && action.salons.salons || [];
