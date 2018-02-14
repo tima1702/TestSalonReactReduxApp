@@ -42,7 +42,7 @@ export default class MultipleItems extends Component {
       <div style={{width: '90%', padding: '45px'}} className="m-auto">
         {images.length > 1 ? <Slider {...settings}>
           {images.map((pointArr, index) => (
-            <div key={index} style={{width: '35%'}}>
+            <div key={index} style={{width: '30%'}}>
               <h4>
                 <img className="m-auto" src={pointArr.image_urls.medium} style={{ height:'250px', maxWidth: '80%'}}></img>
               </h4>
