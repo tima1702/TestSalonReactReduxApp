@@ -15,7 +15,6 @@ export default class Home extends React.Component {
   }
 
   loadNextSalons() {
-    console.log(this.props)
     this.props.fetchSalons(this.props.salons.count)
   }
 
@@ -30,7 +29,7 @@ export default class Home extends React.Component {
   }
 
   checkTotal(){
-   return this.props.salons && this.props.salons.total && this.props.salons.salons && this.props.salons.salons.length &&
+   return this.props.salons && this.props.salons.total && this.props.salons.salons && !!this.props.salons.salons.length &&
           this.props.salons.salons.length == this.props.salons.total ? false : true;
   }
 

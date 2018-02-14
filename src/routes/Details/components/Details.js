@@ -6,34 +6,25 @@ export default class extends React.Component {
   constructor () {
     super();
     this.state = {
-      salon: {},
-      loading: true,
-      error: false,
-      services: [],
-      loadingTable: true
+      error: false
     }
   }
 
-  componentDidMount() {
-    let { params, fetchSalon, fetchServices} = this.props;
+  componentWillMount() {
+    let { fetchSalon, fetchServices, params} = this.props;
     fetchSalon(params.id)
-      .then((data) => {
-        let salon = data.salon && data.salon.salon || false;
-        salon ? this.setState({salon, loading: false}) : this.setState({error: true});
-      }).catch(()=>{
-        this.setState({error: true})
-      })
+      .catch(() => this.setState({error: true}));
     fetchServices(params.id)
-    .then((data) => {
-      let services = data.services && data.services.services || false;
-      services ? this.setState({services, loadingTable: false}) : this.setState({error: true});
-    }).catch(()=>{
-      this.setState({error: true})
-    })
+      .catch(() => this.setState({error: true}));
   }
 
   render () {
-    let {salon, loading, services, error, loadingTable} = this.state;
+    let loading = !this.props.salon;
+    let loadingTable = !this.props.services;
+
+    let {error} = this.state;
+    let {salon, services} = this.props;
+
     return (
       error ? <NotFound /> :
       loading ?

@@ -11,9 +11,9 @@ function mapDispatchToProps (dispatch) {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state.salons[parseInt(ownProps.params.id)])
   return {
-    salon: state.salons ? state.salons[parseInt(ownProps.params.id)] : {}
+    salon: state.salon,
+    services: state.services
   }
 }
 
