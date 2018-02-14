@@ -20,13 +20,13 @@ export default class extends React.Component {
       .then((data) => {
         let salon = data.salon && data.salon.salon || false;
         salon ? this.setState({salon, loading: false}) : this.setState({error: true});
+      }).catch(()=>{
+      this.setState({error: true})
     })
     fetchServices(params.id)
     .then((data) => {
       let services = data.services && data.services.services || false;
       services ? this.setState({services, loading: false}) : this.setState({error: true});
-    }).catch(()=>{
-      this.setState({error: true})
     })
   }
 
