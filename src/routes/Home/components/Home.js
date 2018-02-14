@@ -40,10 +40,7 @@ export default class Home extends React.Component {
 
   render() {
     let {salons, total} = this.props;
-
     let {loading, error} = this.state;
-    salons = [];
-    console.log('loading', loading);
     return (
       <div className="text-center">
         <div>
