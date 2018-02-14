@@ -16,28 +16,21 @@ function receiveSalon(response) {
   }
 }
 
+export const RECEIVE_SERVICES = 'RECEIVE_SERVICES'
+function receiveServices(response) {
+  return {
+    type: RECEIVE_SERVICES,
+    services: response
+  }
+}
+
 // Тут мы встречаемся с нашим первым thunk-генератором действий! Хотя его содержимое
 // отличается, вы должны использовать его, как и любой другой генератор действий:
 // store.dispatch(fetchPosts('reactjs'))
 
 export function fetchSalons (page) {
 
-  // Thunk middleware знает, как обращаться с функциями.
-  // Он передает метод действия в качестве аргумента функции,
-  // т.к. это позволяет отправить действие самостоятельно.
-
   return function (dispatch) {
-
-    // Первая отправка: состояние приложения обновлено,
-    // чтобы сообщить, что запускается вызов API.
-
-    // dispatch(requestPosts())
-
-    // Функция, вызываемая Thunk middleware, может возвращать значение,
-    // которое передается как возвращаемое значение метода dispatch.
-
-    // В этом случае мы возвращаем Promise.
-    // Thunk middleware не требует этого, но это удобно для нас.
 
     return http.get(`/salons?per_page=25&page=${page}`)
       .then(response =>  dispatch(receiveSalons(response)))
@@ -47,25 +40,20 @@ export function fetchSalons (page) {
 
 export function fetchSalon (id) {
 
-  // Thunk middleware знает, как обращаться с функциями.
-  // Он передает метод действия в качестве аргумента функции,
-  // т.к. это позволяет отправить действие самостоятельно.
-
   return function (dispatch) {
-
-    // Первая отправка: состояние приложения обновлено,
-    // чтобы сообщить, что запускается вызов API.
-
-    // dispatch(requestPosts())
-
-    // Функция, вызываемая Thunk middleware, может возвращать значение,
-    // которое передается как возвращаемое значение метода dispatch.
-
-    // В этом случае мы возвращаем Promise.
-    // Thunk middleware не требует этого, но это удобно для нас.
 
     return http.get(`/salons/${id}`)
       .then(response =>  dispatch(receiveSalon(response)))
+
+  }
+}
+
+export function fetchServices(salon_id) {
+
+  return function (dispatch) {
+
+    return http.get(`/salons/${salon_id}/services`)
+      .then(response =>  dispatch(receiveServices(response)))
 
   }
 }
