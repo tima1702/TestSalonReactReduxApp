@@ -1,52 +1,61 @@
 import React, { Component } from 'react'
 import Slider from 'react-slick'
+import noImage from './assets/no_icon.png'
 
-function SampleNextArrow(props) {
+function SampleNextArrow (props) {
   const {className, style, onClick} = props
   return (
     <div
       className={className}
-      style={{...style, display: 'flex',height:'99%', width:'60px'}}
+      style={{...style, display: 'flex', height: '99%', width: '60px'}}
       onClick={onClick}
     ></div>
-  );
+  )
 }
 
-function SamplePrevArrow(props) {
+function SamplePrevArrow (props) {
   const {className, style, onClick} = props
   return (
     <div
       className={className + ' m-auto'}
-      style={{...style, display: 'flex', height:'99%',width:'60px'}}
+      style={{...style, display: 'flex', height: '99%', width: '60px'}}
       onClick={onClick}
     ></div>
-  );
+  )
 }
+
 export default class MultipleItems extends Component {
-  render() {
+  render () {
     const settings = {
       dots: true,
       infinite: true,
       speed: 500,
       slidesToShow: 3,
       slidesToScroll: 1,
-      nextArrow: <SampleNextArrow />,
-      prevArrow: <SamplePrevArrow />
-    };
+      nextArrow: <SampleNextArrow/>,
+      prevArrow: <SamplePrevArrow/>,
+    }
+
+    let {images} = this.props
+
     return (
-      <div style={{width: '90%', padding: '45px'}}  className="m-auto">
-        <Slider {...settings}>
-          {
-            [1,2,3,4,5,6].map((pointArr, index) => (
-              <div key={index}  style={{width: '30%'}}>
-                <h4>
-                  <img className="m-auto" src="http://s3-eu-west-1.amazonaws.com/staging-salony/image/salons/files/000/003/623/original/nail-art-2392-250x250.jpg?1507118077"></img>
-                </h4>
-              </div>
-            ))
+      <div style={{width: '90%', padding: '45px'}} className="m-auto">
+        {images.length > 1 ? <Slider {...settings}>
+          {images.map((pointArr, index) => (
+            <div key={index} style={{width: '30%'}}>
+              <h4>
+                <img className="m-auto" src={pointArr.image_urls.medium}></img>
+              </h4>
+            </div>
+          ))
           }
-        </Slider>
+        </Slider> : <div style={{textAlign: 'center'}}>
+          <h4>
+            <img className="m-auto" src={images[0] && images[0].image_urls.original || noImage}></img>
+          </h4>
+        </div>
+        }
       </div>
-    );
+    )
   }
 }

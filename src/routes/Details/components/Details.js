@@ -29,13 +29,14 @@ export default class extends React.Component {
 
   render () {
     let {salon, loading, services} = this.state;
+    console.log(salon);
     return (
       loading ? <div /> :
       <div className="text-center">
         <div>
           <h1 className="header-label pb-3">{salon.name}</h1>
         </div>
-        <MultipleItems/>
+        <MultipleItems images={salon.images}/>
         <div className="content mb-5">
           <div className="col-xs-12 mb-5 d-inline-block">
             <h3>Working Hours</h3>
