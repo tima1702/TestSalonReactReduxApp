@@ -49,7 +49,7 @@ export default class Home extends React.Component {
         <div className="content mb-5">
           <InfiniteScroll
             next={this.loadNextSalons}
-            hasMore={!!salons.length && total > salons.length}
+            hasMore={!loading && !!salons.length && total > salons.length}
             loader={<h4><div className="loader loader-small"></div></h4>}>
           <div className="col-xs-12 mt-3">
             <div className="table-responsive">
