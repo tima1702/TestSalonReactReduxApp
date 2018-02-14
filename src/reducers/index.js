@@ -11,13 +11,13 @@ export default function rootReducer(state={salons: [], count: 1, services: []}, 
       let salon = action && action.salon || [];
       return {
         ...state,
-        salon: [salon]
+        salon: salon
       }
-    case "RECEIVE_SERVICE":
+    case "RECEIVE_SERVICES":
       let services = action && action.services || [];
       return {
         ...state,
-        services: [services]
+        services: services
       }
 
     default:

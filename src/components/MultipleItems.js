@@ -26,6 +26,7 @@ function SamplePrevArrow (props) {
 
 export default class MultipleItems extends Component {
   render () {
+    let {images} = this.props
     const settings = {
       dots: true,
       infinite: true,
@@ -35,8 +36,6 @@ export default class MultipleItems extends Component {
       nextArrow: <SampleNextArrow/>,
       prevArrow: <SamplePrevArrow/>,
     }
-
-    let {images} = this.props
 
     return (
       <div style={{width: '90%', padding: '45px'}} className="m-auto">
@@ -51,7 +50,7 @@ export default class MultipleItems extends Component {
           }
         </Slider> : <div style={{textAlign: 'center'}}>
           <h4>
-            <img className="m-auto" src={images[0] && images[0].image_urls.original || noImage} ></img>
+            <img className="m-auto" src={images[0] && images[0].image_urls.original || noImage} style={{ height:'250px', maxWidth: '80%'}} ></img>
           </h4>
         </div>
         }

@@ -43,7 +43,9 @@ export function fetchSalon (id) {
   return function (dispatch) {
 
     return http.get(`/salons/${id}`)
-      .then(response =>  dispatch(receiveSalon(response)))
+      .then(response =>  {
+        dispatch(receiveSalon(response.salon))
+      })
 
   }
 }
@@ -53,7 +55,9 @@ export function fetchServices(salon_id) {
   return function (dispatch) {
 
     return http.get(`/salons/${salon_id}/services`)
-      .then(response =>  dispatch(receiveServices(response)))
+      .then(response =>  {
+        dispatch(receiveServices(response.services))
+      })
 
   }
 }
