@@ -11,6 +11,7 @@ html {
 
 html,
 body {
+  background-color:#f3edf5;;
   margin: 0;
   padding: 0;
   height: 100%;
@@ -28,24 +29,25 @@ body {
   width: 360px!important;
 }
 .table-bordered, .table-bordered td, .table-bordered th,.table thead th {
-  border: 1px solid #ead8f3ba;
+  border: 1px solid #bca6ca1a;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color:  #ead8f34f;
+  background-color: #bca6ca1a;
 }
 
 .header-label{
-  background-color: #dcc6e7;
+  background-color: #c1b0ca;
   padding: 15px;
   letter-spacing: 10px;
   color: #ffff;
   font-family: 'Montserrat', sans-serif;
 }
 .table thead th {
- background-color:  #ffffff;
+ background-color: #ffffff;
 }
 .content{
+  height: auto;
   border-radius: 5px;
   background-color: #ffff;
   margin: auto;
@@ -60,6 +62,34 @@ body {
 }
 
 .btn-salon {
-  background: #d182d7 !important;
+  background: #c1b0ca !important;
   color: #fff !important;
+}
+
+.loader {
+  padding-top: 50px!important;
+  margin: auto;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #c1b0ca;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error{
+  //padding-top: 30px !important;
+  text-align: center;
+  overflow-y:hidden!important;
 }
