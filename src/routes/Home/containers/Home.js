@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import { bindActionCreators } from 'redux'
 
 function mapStateToProps(state) {
-
   return {
     salons: state,
 

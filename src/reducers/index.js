@@ -5,7 +5,8 @@ export default function rootReducer(state={salons: [], count: 1, services: []}, 
       return {
         ...state,
         salons: [...state.salons, ...salons],
-        count: ++state.count
+        count: ++state.count,
+        total: action.salons.total,
       }
     case "RECEIVE_SALON":
       let salon = action && action.salon || [];

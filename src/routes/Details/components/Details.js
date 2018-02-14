@@ -15,7 +15,6 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
-    console.log('props', this.props)
     let { params, fetchSalon, fetchServices} = this.props;
     fetchSalon(params.id)
       .then((data) => {
@@ -38,9 +37,15 @@ export default class extends React.Component {
     return (
       error ? <NotFound /> :
       loading ?
-        <div className="pt-xl-5">
-          <div className="loader"></div>
-        </div> :
+        <div className="text-center">
+          <div>
+            <h1 className="header-label pb-3 mb-lg-5">Salon page</h1>
+          </div>
+          <div className="pt-xl-5">
+            <div className="loader"></div>
+          </div>
+        </div>
+        :
         <div className="text-center">
           <div>
             <h1 className="header-label pb-3">{salon.name}</h1>

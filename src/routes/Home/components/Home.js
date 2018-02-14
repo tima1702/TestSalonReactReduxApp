@@ -15,6 +15,7 @@ export default class Home extends React.Component {
   }
 
   loadNextSalons() {
+    console.log(this.props)
     this.props.fetchSalons(this.props.salons.count)
   }
 
@@ -28,6 +29,11 @@ export default class Home extends React.Component {
     }
   }
 
+  checkTotal(){
+   return this.props.salons && this.props.salons.total && this.props.salons.salons && this.props.salons.salons.length &&
+          this.props.salons.salons.length == this.props.salons.total ? false : true;
+  }
+
   render() {
     return (
       <div className="text-center">
@@ -37,7 +43,7 @@ export default class Home extends React.Component {
         <div className="content mb-5">
           <InfiniteScroll
             next={this.loadNextSalons}
-            hasMore={true}
+            hasMore={this.checkTotal()}
             loader={<h4>Loading...</h4>}>
           <div className="col-xs-12 mt-3">
             <div className="table-responsive">
