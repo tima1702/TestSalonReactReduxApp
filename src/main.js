@@ -1,11 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import createStore from './store/createStore'
+import { createStore } from 'redux'
+import loadData from 'reducers/index'
 import './styles/main.scss'
+import loadingData from 'actions/action'
+import {fetchSalons} from "./actions/action";
+import configureStore from './store'
 
 // Store Initialization
 // ------------------------------------
-const store = createStore(window.__INITIAL_STATE__)
+export const store = configureStore()
+store.subscribe(() => console.log(store.getState()))
 
 // Render Setup
 // ------------------------------------

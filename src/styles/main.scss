@@ -37,7 +37,8 @@ body {
 
 .header-label{
   background-color: #dcc6e7;
-  padding-top: 15px;
+  padding: 15px;
+  letter-spacing: 10px;
   color: #ffff;
   font-family: 'Montserrat', sans-serif;
 }
@@ -56,4 +57,9 @@ body {
   color: rgba(121, 121, 121, 0.54);
   font-size: 45px;
   margin: auto;
+}
+
+.btn-salon {
+  background: #d182d7 !important;
+  color: #fff !important;
 }
