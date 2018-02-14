@@ -5,8 +5,8 @@ import { bindActionCreators } from 'redux'
 
 function mapStateToProps(state) {
   return {
-    salons: state,
-
+    salons: state.salons,
+    total: state.total
   }
 }
 
@@ -15,8 +15,5 @@ function mapDispatchToProps(dispatch) {
     fetchSalons: bindActionCreators(fetchSalons, dispatch),
   }
 }
-
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

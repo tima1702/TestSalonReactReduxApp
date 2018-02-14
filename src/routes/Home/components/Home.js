@@ -28,12 +28,9 @@ export default class Home extends React.Component {
     }
   }
 
-  checkTotal(){
-   return this.props.salons && this.props.salons.total && this.props.salons.salons && !!this.props.salons.salons.length &&
-          this.props.salons.salons.length == this.props.salons.total ? false : true;
-  }
-
   render() {
+    let {salons, total} = this.props;
+
     return (
       <div className="text-center">
         <div>
@@ -42,7 +39,7 @@ export default class Home extends React.Component {
         <div className="content mb-5">
           <InfiniteScroll
             next={this.loadNextSalons}
-            hasMore={this.checkTotal()}
+            hasMore={total > salons.length}
             loader={<h4>Loading...</h4>}>
           <div className="col-xs-12 mt-3">
             <div className="table-responsive">
@@ -56,7 +53,7 @@ export default class Home extends React.Component {
                   </tr>
                   </thead>
                   <tbody>
-                  {this.props.salons && this.props.salons.salons && this.props.salons.salons.length && this.props.salons.salons.map((saloon, index) => {
+                  {salons && salons.length > 0 && salons.map((saloon, index) => {
                     return (
                       <tr key={`r${index}`}>
                         <td key={`c${index}`}>{saloon.name}</td>

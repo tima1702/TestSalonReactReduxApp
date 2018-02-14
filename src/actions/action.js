@@ -4,7 +4,7 @@ export const RECEIVE_SALONS = 'RECEIVE_SALONS'
 function receiveSalons(response) {
   return {
     type: RECEIVE_SALONS,
-    salons: response
+    response: response
   }
 }
 
@@ -33,7 +33,9 @@ export function fetchSalons (page) {
   return function (dispatch) {
 
     return http.get(`/salons?per_page=25&page=${page}`)
-      .then(response =>  dispatch(receiveSalons(response)))
+      .then(response =>  {
+        dispatch(receiveSalons(response))
+      })
 
   }
 }

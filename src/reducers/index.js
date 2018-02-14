@@ -1,12 +1,13 @@
-export default function rootReducer(state={salons: [], count: 1, services: []}, action) {
+export default function rootReducer(state={salons: [], count: 1, services: [], total: 0}, action) {
   switch (action.type) {
     case "RECEIVE_SALONS":
-      let salons = action && action.salons && action.salons.salons || [];
+      let salons = action && action.response && action.response.salons || [];
+
       return {
         ...state,
         salons: [...state.salons, ...salons],
         count: ++state.count,
-        total: action.salons.total,
+        total: action.response && action.response.total || 0,
       }
     case "RECEIVE_SALON":
       let salon = action && action.salon || [];
