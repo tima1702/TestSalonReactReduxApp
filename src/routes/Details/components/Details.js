@@ -9,7 +9,8 @@ export default class extends React.Component {
       salon: {},
       loading: true,
       error: false,
-      services: []
+      services: [],
+      loadingTable: true
     }
   }
 
@@ -20,18 +21,20 @@ export default class extends React.Component {
       .then((data) => {
         let salon = data.salon && data.salon.salon || false;
         salon ? this.setState({salon, loading: false}) : this.setState({error: true});
-    })
+      }).catch(()=>{
+        this.setState({error: true})
+      })
     fetchServices(params.id)
     .then((data) => {
       let services = data.services && data.services.services || false;
-      services ? this.setState({services, loading: false}) : this.setState({error: true});
+      services ? this.setState({services, loadingTable: false}) : this.setState({error: true});
     }).catch(()=>{
       this.setState({error: true})
     })
   }
 
   render () {
-    let {salon, loading, services, error} = this.state;
+    let {salon, loading, services, error, loadingTable} = this.state;
     return (
       error ? <NotFound /> :
       loading ?
@@ -44,7 +47,7 @@ export default class extends React.Component {
           </div>
           <MultipleItems images={salon.images}/>
           <div className="content mb-5">
-            <div className="col-xs-12 mb-5 d-inline-block">
+            <div className="col-xs-12 d-inline-block">
               <h3>Working Hours</h3>
               {Object.keys(salon.hours).map((el, i) => {
                 return (
@@ -56,14 +59,14 @@ export default class extends React.Component {
                 )
               })}
             </div>
-            <div className="col-xs-12 mb-5">
+            <div className="col-xs-12">
               <h3>Description</h3>
               <div className="p-3">
                   {salon.description ? salon.description : "Description for salon is absent"}
               </div>
             </div>
             <div className="col-xs-12">
-              <h3>Service</h3>
+              <h3 className="pb-3">Service</h3>
               <div className="table-responsive">
                 <table className="table table-bordered table-striped">
                   <thead>
@@ -74,14 +77,24 @@ export default class extends React.Component {
                   </tr>
                   </thead>
                   <tbody>
-                  {
-                    services.map((service, index) => (
-                      <tr key={index}>
-                        <td>{service.name || 'Nails1'}</td>
-                        <td>{service.duration  + ' minutes' || '-'}</td>
-                        <td>{service.price +' KD'|| '-'}</td>
+                  {loadingTable ?
+                    <tr>
+                      <td colSpan="100%">
+                        <div className="loader loader-table" colSpan="100%"></div>
+                      </td>
+                    </tr>
+                    :
+                    services.length ?
+                      services.map((service, index) => (
+                        <tr key={index}>
+                          <td>{service.name || '-'}</td>
+                          <td>{service.duration + ' minutes' || '-'}</td>
+                          <td>{service.price + ' KD' || '-'}</td>
+                        </tr>
+                      )) :
+                      <tr>
+                        <td className="p-4" colSpan="100%">Nothing Found...</td>
                       </tr>
-                    ))
                   }
                   </tbody>
                 </table>

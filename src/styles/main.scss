@@ -67,9 +67,9 @@ body {
 }
 
 .loader {
-  padding-top: 50px!important;
+  padding-top: 50px;
   margin: auto;
-  border: 16px solid #f3f3f3;
+  border: 16px solid #ffffff;
   border-radius: 50%;
   border-top: 16px solid #c1b0ca;
   width: 120px;
@@ -92,4 +92,12 @@ body {
   //padding-top: 30px !important;
   text-align: center;
   overflow-y:hidden!important;
+}
+
+.loader-table {
+  padding-top: 0px;
+  border: 12px solid #ffffff;
+  border-top: 12px solid #c1b0ca;
+  width: 60px;
+  height:60px;
 }
