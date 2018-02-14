@@ -1,11 +1,12 @@
 import { connect } from 'react-redux'
 import Details from '../components/Details'
-import { bindActionCreators } from "redux";
-import { fetchSalon } from "../../../actions/action";
+import { bindActionCreators } from 'redux';
+import { fetchSalon } from '../../../actions/action';
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     fetchSalon: bindActionCreators(fetchSalon, dispatch),
+    fetch
   }
 }
 

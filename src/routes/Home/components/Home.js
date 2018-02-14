@@ -50,7 +50,7 @@ export default class Home extends React.Component {
                           key={`z${index}`}>{!!saloon.images.length ?
                           <img height="40px" width="40px" src={saloon.images[0].image_urls.original}/> : '-'}</td>
                         <td key={`a${index}`}>
-                          <Link to={`/details/${index}`}>
+                          <Link to={`/details/${saloon.id}`}>
                             <button className="btn btn-salon">DETAILS</button>
                           </Link>
                         </td>
